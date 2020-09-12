@@ -37,6 +37,7 @@ public class ArbolBinarioControlador implements Serializable {
 
     private ArbolBinario arbol = new ArbolBinario();
     private int dato;
+    private int multiplicar;
     private boolean verInOrden = false; 
     private boolean verPreOrden = false;
     private boolean verPostOrden = false;
@@ -189,6 +190,15 @@ public class ArbolBinarioControlador implements Serializable {
         this.dato = dato;
     }
 
+     public int getmultiplicar() {
+        return multiplicar;
+    }
+
+    public void setmultiplicar(int multiplicar) {
+        this.multiplicar = multiplicar;
+    }
+    
+    
     public ArbolBinario getArbol() {
         return arbol;
     }
@@ -293,7 +303,22 @@ public class ArbolBinarioControlador implements Serializable {
             JsfUtil.addErrorMessage(ex.getMessage());
         }
     }
-      public void buscarNumeros() {
+     
+    
+     public void multiplicar() {
+        try{
+        arbol.isLleno();
+        this.arbol.multiplicar();
+        pintarArbol();
+        }catch (ArbolBinarioException ex) {
+            JsfUtil.addErrorMessage(ex.getMessage());
+        }
+    }
+    
+    
+    
+    
+    public void buscarNumeros() {
         for (Element ele : model.getElements()) {
             ele.setStyleClass("ui-diagram-element");
             int numbusc = Integer.parseInt(ele.getData().toString());

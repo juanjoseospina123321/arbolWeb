@@ -26,15 +26,12 @@
                 
                 
                 <p:commandButton value="Por Nivel" action="#{arbolBinarioControlador.habilitarNivel()}" update="@all" ajax="false" />
-                <p:commandButton value="Nivel Ordenado" action="#{arbolBinarioControlador.habilitarPorNivel()}" update="@all" ajax="false" />
-                <br/>
-                <p:commandButton value="Buscar menor" action="#{arbolBinarioControlador.habilitaMenor()}" update="@all" ajax="false" />
+                
                 <p:commandButton value="Borrar menor" action="#{arbolBinarioControlador.borrarMenor()}" update="@all" ajax="false" />
                 <br/>
-                <p:commandButton value="Buscar mayor" action="#{arbolBinarioControlador.habilitaMayor()}" update="@all" ajax="false" />
                 <p:commandButton value="Borrar mayor" action="#{arbolBinarioControlador.borrarMayor()}" update="@all" ajax="false" />
                 <br/>
-                <p:commandButton value="Cambiar números" action="#{arbolBinarioControlador.cambiar()}" update="@all" ajax="false" />
+                <p:commandButton value="Cambiar valores" action="#{arbolBinarioControlador.cambiar()}" update="@all" ajax="false" />
                 <p:commandButton value="Podar" action="#{arbolBinarioControlador.podarArbol()}" update="@all" ajax="false" />
                 <br/>
                 <p:commandButton value="Dar Hojas" action="#{arbolBinarioControlador.habilitarHojas}" update="@all" ajax="false" />
@@ -42,6 +39,15 @@
                 <br/>
                 <p:commandButton value="Balance" action="#{arbolBinarioControlador.habilitarBalance()}" update="@all" ajax="false" />
            
+                
+                <p:panel header="multiplicar arbol">
+                <p:outputLabel value="numero por el que va a multiplicar:"/>
+                <p:inputText required="true" value="#{arbolBinarioControlador.dato}"/>
+                <p:commandButton ajax="false"  value="multiplicar" action="#{arbolBinarioControlador.multiplicar()}"
+                                 update="@all" />
+                            </p:panel>
+                
+                
             </p:panel>
         </h:form>
         
