@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./templatemain.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:define name="head">
+        
+    </ui:define>
+    <ui:define name="content">       
+
+        <p:growl id="grwlErrores"/>
+        <p:diagram id="pnlArbol" value="#{arbolBinarioControlador.model}" style="height:400px" styleClass="ui-widget-content" />
+
+        <h:form>
+            <p:panel header="Agregar Nuevo Nodo">
+                <p:outputLabel value="Dato:"/>
+                <p:inputText required="true" value="#{arbolBinarioControlador.dato}"/>
+                <p:commandButton ajax="false"  value="Agregar" action="#{arbolBinarioControlador.adicionarNodo()}"
+                                 update="@all" />
+                            </p:panel>
+        </h:form>
+        
+        <h:form>
+            <p:panel header="Botones Del Arbol abb">
+                
+                
+                <p:commandButton value="Por Nivel" action="#{arbolBinarioControlador.habilitarNivel()}" update="@all" ajax="false" />
+                <p:commandButton value="Nivel Ordenado" action="#{arbolBinarioControlador.habilitarPorNivel()}" update="@all" ajax="false" />
+                <br/>
+                <p:commandButton value="Buscar menor" action="#{arbolBinarioControlador.habilitaMenor()}" update="@all" ajax="false" />
+                <p:commandButton value="Borrar menor" action="#{arbolBinarioControlador.borrarMenor()}" update="@all" ajax="false" />
+                <br/>
+                <p:commandButton value="Buscar mayor" action="#{arbolBinarioControlador.habilitaMayor()}" update="@all" ajax="false" />
+                <p:commandButton value="Borrar mayor" action="#{arbolBinarioControlador.borrarMayor()}" update="@all" ajax="false" />
+                <br/>
+                <p:commandButton value="Cambiar números" action="#{arbolBinarioControlador.cambiar()}" update="@all" ajax="false" />
+                <p:commandButton value="Podar" action="#{arbolBinarioControlador.podarArbol()}" update="@all" ajax="false" />
+                <br/>
+                <p:commandButton value="Dar Hojas" action="#{arbolBinarioControlador.habilitarHojas}" update="@all" ajax="false" />
+                <p:commandButton value="Rama Mayor" action="#{arbolBinarioControlador.habilitarRamaMayor()}" update="@all" ajax="false" />
+                <br/>
+                <p:commandButton value="Balance" action="#{arbolBinarioControlador.habilitarBalance()}" update="@all" ajax="false" />
+           
+            </p:panel>
+        </h:form>
+        
+        
+        
+        
+        <h:form>
+            <p:panel header="tipos de orden">
+                
+                 <p:commandButton value="PreOrden" action="#{arbolBinarioControlador.habilitarPreOrden()}" update="@all" ajax="false"/>
+                <br/>
+                 <p:commandButton value="InOrden" action="#{arbolBinarioControlador.habilitarInOrden()}" update="@all" ajax="false"/>
+                <br/>
+                <p:commandButton value="PostOrden" action="#{arbolBinarioControlador.habilitarPostOrden()}" update="@all" ajax="false" />
+                <br/>
+                <p:commandButton value="PostOrden" action="#{arbolBinarioControlador.habilitarPostOrden()}" update="@all" ajax="false" />
+                <br/>
+                
+                 <h:panelGroup rendered="#{arbolBinarioControlador.verInOrden}">
+            <p:panel header="InOrden">
+                <p:dataTable var="nodo" value="#{arbolBinarioControlador.arbol.inOrden()}">
+                    <p:column headerText="El arbol en InOrden :">
+                        <h:outputText value="#{nodo}" />
+                    </p:column>
+
+                </p:dataTable>
+            </p:panel>
+        </h:panelGroup>
+        <h:panelGroup rendered="#{arbolBinarioControlador.verPostOrden}">
+        <p:panel header ="PostOrden">
+            <p:dataTable var="nodo" value="#{arbolBinarioControlador.arbol.postOrden()}">
+                    <p:column headerText="El arbol en PostOrden :">
+                        <h:outputText value="#{nodo}" />
+                    </p:column>
+
+                </p:dataTable>
+        </p:panel>
+        </h:panelGroup>
+                 
+            </p:panel>
+        </h:form>
+        
+        <h:form>
+            <p:panel header="Llenar árbol">
+                <p:inputTextarea required="true" cols="40" value="#{arbolBinarioControlador.datoscsv}"/>
+                <p:commandButton value="Llenar Arbol" action="#{arbolBinarioControlador.extraerDatos()}"
+                                 update="@all" ajax="false"/>
+
+            </p:panel>
+        </h:form>
+        <h:form>
+
+            <p:panel header="Terminados en">
+                <p:inputText required="true" value="#{arbolBinarioControlador.terminado}"/>
+                <p:commandButton value="Buscar Terminados" action="#{arbolBinarioControlador.buscarTerminadosEn()}"
+                                 update="@all" ajax="false"/>
+                <p:commandButton value="Obtener árbol terminados" 
+                                 action="#{arbolBinarioControlador.encontrarTerminadosEn()}"
+                                 update="@all" ajax="false"/>
+            </p:panel>
+        </h:form>
+                 <h:form>
+                  <p:panel header="Buscar numero">
+                      <p:inputText required="true" value="#{arbolBinarioControlador.numero}"/>
+                      <p:commandButton value="Buscar numero" action="#{arbolBinarioControlador.buscarNumeros()}"
+                                 update="@all" ajax="false"/>
+
+            </p:panel>
+        </h:form>
+         <h:form>
+                  <p:panel header="Buscar padre ">
+                      <p:inputText required="true" value="#{arbolBinarioControlador.hijo}"/>
+                      <p:commandButton value="Buscar padre de numero insertado" action="#{arbolBinarioControlador.darPadre()}"
+                                 update="@all" ajax="false"/>
+
+            </p:panel>
+        </h:form>
+        
+        <h:panelGroup rendered="#{arbolBinarioControlador.verPreOrden}">
+       
+            <p:panel header="PreOrden">
+            <p:dataTable var="nodo" value="#{arbolBinarioControlador.arbol.preOrden()}">
+                    <p:column headerText="PreOrden :">
+                        <h:outputText value="#{nodo}" />
+                    </p:column>
+
+                </p:dataTable>
+        </p:panel>
+        </h:panelGroup>
+        
+       
+        <h:panelGroup rendered="#{arbolBinarioControlador.verNivel}">
+        <p:panel header ="Nivel">
+            <p:dataTable var="nodo" value="#{arbolBinarioControlador.arbol.impNiveles()}">
+                    <p:column headerText="por niveles :">
+                        <h:outputText value="#{nodo}" />
+                    </p:column>
+
+                </p:dataTable>
+        </p:panel>
+        </h:panelGroup> 
+        <h:panelGroup rendered="#{arbolBinarioControlador.verPorNivel}">
+        <p:panel header ="Nivel Ordenado">
+            <p:dataTable var="nodo" value="#{arbolBinarioControlador.arbol.imprimirNivel()}">
+                    <p:column headerText="niveles ordenado :">
+                        <h:outputText value="#{nodo}" />
+                    </p:column>
+
+                </p:dataTable>
+        </p:panel>
+        </h:panelGroup>
+        <h:panelGroup rendered="#{arbolBinarioControlador.verMenor}">
+        <p:panel header ="Menor">
+            <p:dataTable var="nodo" value="#{arbolBinarioControlador.arbol.Menor()}">
+                    <p:column headerText="número menor del arbol es:">
+                        <h:outputText value="#{nodo}" />
+                    </p:column>
+
+                </p:dataTable>
+        </p:panel>
+        </h:panelGroup>
+        
+        <h:panelGroup rendered="#{arbolBinarioControlador.verMayor}">
+        <p:panel header ="Mayor">
+            <p:dataTable var="nodo" value="#{arbolBinarioControlador.arbol.Mayor()}">
+                    <p:column headerText="número mayor del arbol es: ">
+                        <h:outputText value="#{nodo}" />
+                    </p:column>
+
+                </p:dataTable>
+        </p:panel>
+        </h:panelGroup> 
+        
+        <h:panelGroup rendered="#{arbolBinarioControlador.verHojas}">
+        <p:panel header ="Hojas">
+            <p:dataTable var="nodo" value="#{arbolBinarioControlador.arbol.imprimirHojas()}">
+                    <p:column headerText="Las hojas del arbol son: ">
+                        <h:outputText value="#{nodo}" />
+                    </p:column>
+
+                </p:dataTable>
+        </p:panel>
+        </h:panelGroup>
+        <h:panelGroup rendered="#{arbolBinarioControlador.verRamaMayor}">
+        <p:panel header ="Rama Mayor">
+            <p:dataTable var="nodo" value="#{arbolBinarioControlador.arbol.ObtenerRamamayor()}">
+                    <p:column headerText="La rama mayor del arbol es: ">
+                        <h:outputText value="#{nodo}" />
+                    </p:column>
+
+                </p:dataTable>
+        </p:panel>
+        </h:panelGroup> 
+        <h:panelGroup rendered="#{arbolBinarioControlador.verBalance}">
+        <p:panel header ="Balance">
+            <p:dataTable var="nodo" value="#{arbolBinarioControlador.arbol.imprimirBalance()}">
+                    <p:column headerText="El balance del arbol es: ">
+                        <h:outputText value="#{nodo}" />
+                    </p:column>
+
+                </p:dataTable>
+        </p:panel>
+        </h:panelGroup>
+        <h:panelGroup rendered="#{arbolBinarioControlador.verPadre}">
+        <p:panel header ="Padre">
+            <p:dataTable var="nodo" value="#{arbolBinarioControlador.arbol.padre()}">
+                    <p:column headerText="El padre del numero del arbol es: ">
+                        <h:outputText value="#{nodo}" />
+                    </p:column>
+
+                </p:dataTable>
+        </p:panel>
+        </h:panelGroup>
+        
+        <p:diagram id="pnlArbolTerminados" value="#{arbolBinarioControlador.modelArbol2}" style="height:400px" styleClass="ui-widget-content" />
+        <p:diagram id="pnlArbolBuscar" value="#{arbolBinarioControlador.modelArbol2}" style="height:400px" styleClass="ui-widget-content" />
+        <p:diagram id="pnlArbolPadre" value="#{arbolBinarioControlador.modelArbol2}" style="height:400px" styleClass="ui-widget-content" />
+    </ui:define>
+
+</ui:composition>
