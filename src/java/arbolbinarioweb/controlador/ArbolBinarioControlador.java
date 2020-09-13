@@ -37,7 +37,7 @@ public class ArbolBinarioControlador implements Serializable {
 
     private ArbolBinario arbol = new ArbolBinario();
     private int dato;
-    private int multiplicar;
+    private int nummultiplicar;
     private boolean verInOrden = false; 
     private boolean verPreOrden = false;
     private boolean verPostOrden = false;
@@ -50,12 +50,17 @@ public class ArbolBinarioControlador implements Serializable {
     private boolean verBalance= false;
     private boolean verPadre= false;
     
-    private String datoscsv = "5,4,6,3,8,-8,10,59,28,80,78,90,-1,99,-99";
+    private String datoscsv = "1,2,-1";
     private int terminado;
     private int numero;
     private int hijo;
     private ArbolBinario arbolTerminados = new ArbolBinario();
 
+    
+
+    
+    
+    
     public ArbolBinario getArbolTerminados() {
         return arbolTerminados;
     }
@@ -190,13 +195,17 @@ public class ArbolBinarioControlador implements Serializable {
         this.dato = dato;
     }
 
-     public int getmultiplicar() {
-        return multiplicar;
+    public int getNummultiplicar() {
+        return nummultiplicar;
     }
 
-    public void setmultiplicar(int multiplicar) {
-        this.multiplicar = multiplicar;
+    public void setNummultiplicar(int nummultiplicar) {
+        this.nummultiplicar = nummultiplicar;
     }
+
+    
+  
+     
     
     
     public ArbolBinario getArbol() {
@@ -304,17 +313,15 @@ public class ArbolBinarioControlador implements Serializable {
         }
     }
      
-    
-     public void multiplicar() {
+    public void multiplicar() {
         try{
         arbol.isLleno();
-        this.arbol.multiplicar();
+        this.arbol.cambiar();
         pintarArbol();
         }catch (ArbolBinarioException ex) {
             JsfUtil.addErrorMessage(ex.getMessage());
         }
     }
-    
     
     
     

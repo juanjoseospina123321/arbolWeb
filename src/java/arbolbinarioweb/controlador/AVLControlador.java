@@ -36,7 +36,7 @@ public class AVLControlador implements Serializable {
     private boolean verPreOrden = false;
     private boolean verPostOrden = false;
 
-    private String datoscsv = "5,6,7";//,-8,10,59,28,80,78,90";
+    private String datoscsv = "1,2,-1";//,-8,10,59,28,80,78,90";
     private int terminado;
     private ArbolBinarioAVL arbolTerminados = new ArbolBinarioAVL();
 

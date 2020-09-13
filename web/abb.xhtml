@@ -19,6 +19,9 @@
                 <p:commandButton ajax="false"  value="Agregar" action="#{arbolBinarioControlador.adicionarNodo()}"
                                  update="@all" />
                             </p:panel>
+            
+            
+            
         </h:form>
         
         <h:form>
@@ -31,24 +34,24 @@
                 <br/>
                 <p:commandButton value="Borrar mayor" action="#{arbolBinarioControlador.borrarMayor()}" update="@all" ajax="false" />
                 <br/>
-                <p:commandButton value="Cambiar valores" action="#{arbolBinarioControlador.cambiar()}" update="@all" ajax="false" />
                 <p:commandButton value="Podar" action="#{arbolBinarioControlador.podarArbol()}" update="@all" ajax="false" />
                 <br/>
                 <p:commandButton value="Dar Hojas" action="#{arbolBinarioControlador.habilitarHojas}" update="@all" ajax="false" />
                 <p:commandButton value="Rama Mayor" action="#{arbolBinarioControlador.habilitarRamaMayor()}" update="@all" ajax="false" />
                 <br/>
                 <p:commandButton value="Balance" action="#{arbolBinarioControlador.habilitarBalance()}" update="@all" ajax="false" />
-           
-                
-                <p:panel header="multiplicar arbol">
-                <p:outputLabel value="numero por el que va a multiplicar:"/>
-                <p:inputText required="true" value="#{arbolBinarioControlador.dato}"/>
+           <p:commandButton value="Cambiar números" action="#{arbolBinarioControlador.cambiar()}" update="@all" ajax="false" />
+                <p:panel header="multiplicar">
+                <p:outputLabel value="numero a multiplicar:"/>
+                <p:inputText required="true" value="#{arbolBinarioControlador.nummultiplicar}"/>
                 <p:commandButton ajax="false"  value="multiplicar" action="#{arbolBinarioControlador.multiplicar()}"
                                  update="@all" />
                             </p:panel>
+               
+                            </p:panel>
                 
                 
-            </p:panel>
+            
         </h:form>
         
         
