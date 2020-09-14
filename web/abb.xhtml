@@ -41,10 +41,19 @@
                 <br/>
                 <p:commandButton value="Balance" action="#{arbolBinarioControlador.habilitarBalance()}" update="@all" ajax="false" />
            <p:commandButton value="Cambiar números" action="#{arbolBinarioControlador.cambiar()}" update="@all" ajax="false" />
-                <p:panel header="multiplicar">
+                
+           
+           <p:panel header="multiplicar">
                 <p:outputLabel value="numero a multiplicar:"/>
                 <p:inputText required="true" value="#{arbolBinarioControlador.nummultiplicar}"/>
                 <p:commandButton ajax="false"  value="multiplicar" action="#{arbolBinarioControlador.multiplicar()}"
+                                 update="@all" />
+                            </p:panel>
+           
+           <p:panel header="eliminar nivel">
+                <p:outputLabel value="nivel a eliminar:"/>
+                <p:inputText required="true" value="#{arbolBinarioControlador.nivelEliminar}"/>
+                <p:commandButton ajax="false"  value="eliminar" action="#{arbolBinarioControlador.podarNiveles()}"
                                  update="@all" />
                             </p:panel>
                

@@ -38,6 +38,7 @@ public class ArbolBinarioControlador implements Serializable {
     private ArbolBinario arbol = new ArbolBinario();
     private int dato;
     private int nummultiplicar;
+    private int nivelEliminar;
     private boolean verInOrden = false; 
     private boolean verPreOrden = false;
     private boolean verPostOrden = false;
@@ -69,6 +70,18 @@ public class ArbolBinarioControlador implements Serializable {
         this.arbolTerminados = arbolTerminados;
     }
 
+    public int getNivelEliminar() {
+        return nivelEliminar;
+    }
+
+    public void setNivelEliminar(int nivelEliminar) {
+        this.nivelEliminar = nivelEliminar;
+    }
+
+    
+
+    
+    
     public int getTerminado() {
         return terminado;
     }
@@ -316,7 +329,7 @@ public class ArbolBinarioControlador implements Serializable {
     public void multiplicar() {
         try{
         arbol.isLleno();
-        this.arbol.cambiar();
+        this.arbol.multiplicar();
         pintarArbol();
         }catch (ArbolBinarioException ex) {
             JsfUtil.addErrorMessage(ex.getMessage());
@@ -359,6 +372,17 @@ public class ArbolBinarioControlador implements Serializable {
             JsfUtil.addErrorMessage(ex.getMessage());
         }
     }
+       
+       public void podarNiveles() {
+         try {
+            arbol.isLleno();
+            this.arbol.podarNiveles();
+            pintarArbol();
+        } catch (ArbolBinarioException ex) {
+            JsfUtil.addErrorMessage(ex.getMessage());
+        }
+    }
+       
         private String recorrido(ArrayList it, String msg) {
         int i = 0;
         String r = msg + "\n";
